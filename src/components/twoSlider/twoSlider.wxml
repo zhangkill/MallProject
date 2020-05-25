@@ -1,0 +1,14 @@
+<!--实现双向滑动选择区间值-->
+<view class='sliderHCon'>
+  <view class='showMoney'>
+    <text class='MoneyValue'>￥{{leftValue}}</text>
+    <text class='MoneyValue'>￥{{rightValue}}</text>
+  </view>
+   <view class='twoSlider'>
+        <view class="line-box">
+            <view class="left-icon line-icon {{leftValue>1920?'transLeft':''}}" style="left:{{leftValue/2000*100}}%;" catchtouchmove="touchmoveLeft">
+            <image src='../../assets/images/hotel/round-icon.png'></image></view>
+            <view class="right-icon line-icon" style="left:{{rightValue/2000*100}}%;" catchtouchmove="touchmoveRight"><image src='../../assets/images/hotel/round-icon.png'></image></view>
+        </view>
+  </view>
+</view>

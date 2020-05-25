@@ -1,0 +1,18 @@
+<view class="container">
+    <view class="text-box">
+        <view class="text-title">景区取票</view>
+        <view class="text-desp">{{detailInfo.notice}}</view>
+    </view>
+    <view class="text-box">
+        <view class="text-title">景区开放时间</view>
+        <view class="text-desp">{{detailInfo.opentime}}</view>
+    </view>
+    <view class="text-box">
+        <view class="text-title">特殊人群政策</view>
+        <view class="text-desp">{{detailInfo.specialPopulationPolicyRemark}}</view>
+    </view>
+    <view class="text-box">
+        <view class="text-title">温馨提示</view>
+        <view class="text-desp">{{detailInfo.otherremark}}</view>
+    </view>
+</view>

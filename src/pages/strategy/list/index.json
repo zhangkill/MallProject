@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "景点攻略",
+    "usingComponents": {
+        "listItem": "/components/strategy/listItem/listItem"
+    }
+}

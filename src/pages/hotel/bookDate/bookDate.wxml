@@ -1,0 +1,5 @@
+<!--src/pages/hotel/bookDate/bookDate.wxml-->
+<view>
+    <datePicker MonthNumber="{{timeLimit}}" selectStart="{{searchData.startDate}}" selectEnd="{{searchData.endDate}}" bind:datePicker="datePicker"></datePicker>
+</view>
+

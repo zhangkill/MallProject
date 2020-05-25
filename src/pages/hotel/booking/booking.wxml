@@ -1,0 +1,77 @@
+<!--酒店预订-->
+
+<wxs module="Func">
+    var time = function(currentTime){
+        if(!currentTime) return;
+        currentTime = currentTime.substring(5)
+        return currentTime
+    };
+    module.exports = {
+        time : time,
+    }
+</wxs>
+
+<view class="pt30 bgfff">
+    <!-- 景点 -->
+    <view class='ht-topbox'>
+        <text class='ht-topbox-name' bindtap='gotoSelectPoint' data-id='{{searchData.scenicSpot}}'>{{searchData.scenicSpotName}}</text>
+        <image class='ht-topbox-icon' bindtap='gotoSelectPoint'
+        data-id='{{searchData.scenicSpot}}'  src="../../../assets/images/hotel/arrow-black-icon.png"></image>
+    </view>
+    <!-- 日期 -->
+    <view class='ht-time' bindtap='gotoSelectDate'>
+        <view class='ht-time-content'>
+            <view class='ht-time-content-box'>
+                <view class='ht-time-top-text'>{{searchData.startDateName}}</view>
+                <view class='ht-time-bt-text'>{{Func.time(searchData.startDate)}}</view>
+            </view>
+            <view class='ht-time-text'>至</view>
+            <view class='ht-time-content-box'>
+                <view class='ht-time-top-text'>{{searchData.endDateName}}</view>
+                <view class='ht-time-bt-text'>{{Func.time(searchData.endDate)}}</view>
+            </view>
+        </view>
+        <view class='ht-time-icon'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+    </view>
+    <!-- 酒店 -->
+    <view class='ht-column-box border-btm mt20'>
+        <input placeholder='请输入酒店名称' class='ht-column-box-ipt' bindinput='bindinput' value='{{searchData.hotelName}}'></input>
+    </view>
+    <!-- 型号 -->
+    <view class='ht-column-box' bindtap="switchModal">
+        <view wx:if="{{searchData.grade || searchData.priceEnd}}" class="left-block left-block-black line-one">
+            <text class=''>{{searchData.priceStrart}}~{{searchData.priceEnd}}元/<block wx:if="{{searchData.grade==0}}">不限</block><block wx:elif="{{searchData.grade==1}}">民宿/客栈</block><block wx:elif="{{searchData.grade==2}}">经济型</block><block wx:elif="{{searchData.grade==3}}">高档型</block><block wx:elif="{{searchData.grade==4}}">豪华型</block></text>
+        </view>
+        <view wx:else class="left-block line-one border-btm">
+            <text class=''>价格/等级</text>
+        </view>
+        <view class='right-block'><image src="../../../assets/images/hotel/arrow-icon.png"></image></view>
+    </view>
+    
+
+    <view wx:if="{{searchData.scenicSpot==null || !searchData.startDate || !searchData.endDate}}" class='ht-book-btn disabled'>开始搜索</view>
+    <view wx:else class='ht-book-btn' bindtap='searchHotel'>开始搜索</view>
+    <!-- 价格等级弹框 -->
+    <view class='ht-modal' wx:if="{{showModal}}">
+        <view class='ht-modal-bg' bindtap="switchModal"></view>
+        <view class='ht-modal-con'>
+            <view class='ht-modal-txt1'>价格</view>
+            <view class='ht-modal-slider'>
+                <twoSlider leftValue="{{modalData.priceStrart}}" rightValue="{{modalData.priceEnd}}" bind:changeSlider="changeSlider"></twoSlider>
+            </view>
+            
+            <view class='ht-modal-typelist'>
+                <view class="ht-modal-typelist-item {{item.value==modalData.grade?'active':''}}"
+                        wx:for="{{levelList}}"
+                        wx:key="{{item.value}}"
+                        data-key="{{item.value}}"
+                        bindtap='selectGrade'>{{item.label}}</view>
+            </view>
+
+            <view class='ht-modal-btns'>
+                <view class='ht-modal-btn border-right' bindtap="switchModal">取消</view>
+                <view class='ht-modal-btn' bindtap='updataSearch'>完成</view>
+            </view>
+        </view>
+    </view>
+</view>

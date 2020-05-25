@@ -1,0 +1,49 @@
+<view class="container">
+  <view class="ui-tabs">
+    <view class="ui_tab_item {{curIndex == 0 ? 'ui-tab_active':''}}" 
+      bindtap="getProductDetail" data-index="0">攻略</view>
+    <view class="ui_tab_item {{curIndex == 1 ? 'ui-tab_active':''}}" 
+      bindtap="getProductDetail" data-index="1">酒店</view>
+  </view>
+
+  <view class="tab-cont">
+    <view  class="tab-cont-item" wx:if="{{curIndex == 0}}">
+      <view class="ui-content clear">
+        <view class="list left-list">
+          <block wx:for="{{strategyList}}" wx:key="">
+            <listItem itemObj="{{item}}" wx:if="{{index%2==0}}"></listItem>
+          </block>
+        </view>
+        <view class="list right-list">
+          <block wx:for="{{strategyList}}" wx:key="">
+            <listItem itemObj="{{item}}" wx:if="{{index%2==1}}"></listItem>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view  class="tab-cont-item" wx:if="{{curIndex == 1}}">
+      <view class="p-list">
+        <block wx:for="{{hotelList}}" wx:key="{{item}}">
+          <navigator class="ui-item" url="/pages/hotel/hotelDetail?id={{item.id}}" hover-class="none">
+            <view class="ui-image"><image src="{{imagePrefix}}{{item.hotelbase64Files.body}}" /></view>
+            <view class="ui-box">
+              <view class="ui-box-l">
+                <view class="ui-title ellipsis">{{item.name}}</view>
+                <view class="ui-label-txt" wx:if="{{item.grade==0}}">不限</view>
+                <view class="ui-label-txt" wx:elif="{{item.grade==1}}">民宿/客栈</view>
+                <view class="ui-label-txt" wx:elif="{{item.grade==2}}">经济型</view>
+                <view class="ui-label-txt" wx:elif="{{item.grade==3}}">高档型</view>
+                <view class="ui-label-txt" wx:else>豪华型</view>
+                <view class="ui-num ellipsis">
+                  <image class="location_icon" src="/assets/images/location2.png" />{{item.address}}</view>
+              </view>
+              <view class="ui-box-r">
+                <view class="ui-price"><text class="m-color">￥{{item.price || '0'}}</text>起</view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

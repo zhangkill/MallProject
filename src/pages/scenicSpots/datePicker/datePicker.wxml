@@ -1,0 +1,15 @@
+<view class="container">
+    <view class="calendar">
+        <view class="weeks-box">
+            <view class="week" wx:for="{{weeks_ch}}" wx:key="{{index}}">{{item}}</view>
+        </view>
+
+        <calendar expirydate="{{expirydate}}"
+            price="{{price}}"
+            subscribeRule="{{subscribeRule}}"
+            expiryEndDate="{{expiryEndDate}}"
+            bind:datePicker="datePicker">
+        </calendar>
+
+    </view>
+</view>

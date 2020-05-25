@@ -1,0 +1,110 @@
+/**app.wxss**/
+@import "/wxParse/wxParse.wxss";
+
+page{
+  color: #333;
+  font-family: PingFangSC-Regular,'微软雅黑', '宋体', sans-serif;
+  font-size: 32rpx;
+  height: 100%;
+}
+.clear:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clear{
+  zoom:1;
+}
+
+.margin{
+  margin: 0 auto;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.clamp{
+  display: flex;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+
+}
+/* 隐藏滚动条 */
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* 去掉button默认样式 */
+button{
+  border-radius: 0;
+}
+button::after{
+  border:none;
+}
+
+
+.ui-cell__bd{
+  display: flex;
+  align-items: center;
+}
+.ui-cell__ft_in-access{
+  padding-right:13px;
+  position:relative;
+}
+.section{
+  display: flex;
+  align-items: center;
+  height: 78rpx;
+  position: relative;
+  font-size: 28rpx;
+  color: #333333;
+}
+.viewport .section{
+  background: #fff;
+}
+.section_title{
+  width: 290rpx;
+}
+.section_access_after::after{
+  content: "";
+  border-top: 1rpx solid #F1F1F1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.section_flex_fj{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section_flex_sp{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
